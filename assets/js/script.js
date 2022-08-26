@@ -26,11 +26,17 @@ var checkTimeBlocks = function() {
         }
         
     });
-    console.log("function called!")
 };
 
 // Function for saving tasks in each time block
+$(".saveBtn").on("click", function() {
+    // Assign variables to push to local storage
+    var time = $(this).parent().attr("id");
+    var tasks = $(this).siblings(".description").val();
 
+    localStorage.setItem(time, tasks)
+    console.log("item saved!")
+})
 // Load info from localStorage to populate saved tasks/text
 
 // Clear localstorage if it is a new date?
