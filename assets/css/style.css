@@ -65,9 +65,22 @@ textarea{
   color: white;
 }
 
-.saveBtn i:hover {
+.saveBtn:hover {
   font-size: 20px;
-  transition: all .3s ease-in-out;
+  transition: all .1s ease-in-out;
+  background-position: 1px -50px;
+}
+
+.clearBtn {
+  background: #ea0028;
+  background-image: linear-gradient(180deg, #ffb4a8 0%, #ea0028 100%);
+  transition: all .5s ease-out;
+  background-size: 1px 100px;
+  background-position: 0 -10px;
+}
+
+.clearBtn:hover {
+  background-position: 1px -50px;
 }
 
 /* Responsive CSS for mobile screens for the md-designation in bootstrap */

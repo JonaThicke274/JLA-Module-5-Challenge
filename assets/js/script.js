@@ -1,5 +1,5 @@
 // Assigns current day, date, and local time to a variable
-var currentDate = moment().format("LLLL");
+var currentDate = moment().format("dddd, LL");
 // Dynamically makes the html content of the id #currentDay as the variable with the current dates info
 $("#currentDay").html(currentDate);
 
@@ -45,7 +45,16 @@ $(".description").each(function() {
     $(this).text(localStorage.getItem($(this).parent().attr("id")));
 });
 
-// Clear localstorage if it is a new date?
+// Clears tasks for user once it is a new work day
+$(".clearBtn").on("click", function() {
+    $(".description").each(function() {
+        $(this).text("");
+        var time = $(this).parent().attr("id");
+        var tasks = $(this).siblings(".description").val("");
+
+        localStorage.removeItem($(this).parent().attr("id"));
+    })
+})
 
 // Calls checkTimeBlocks on page load-in
 checkTimeBlocks();
