@@ -24,7 +24,6 @@ var checkTimeBlocks = function() {
         else if (hourBlock > currentHour) {
             $(this).addClass("future");
         }
-        
     });
 };
 
@@ -34,10 +33,17 @@ $(".saveBtn").on("click", function() {
     var time = $(this).parent().attr("id");
     var tasks = $(this).siblings(".description").val();
 
+    // Saves time and task(s) to localStorage
     localStorage.setItem(time, tasks)
-    console.log("item saved!")
-})
-// Load info from localStorage to populate saved tasks/text
+    // Prompts user that tasks for the given time block have been saved
+    alert("Task(s) saved!")
+});
+
+
+// Load info from localStorage for each description class based on parent element id
+$(".description").each(function() {
+    $(this).text(localStorage.getItem($(this).parent().attr("id")));
+});
 
 // Clear localstorage if it is a new date?
 
