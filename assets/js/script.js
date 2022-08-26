@@ -12,6 +12,8 @@ var checkTimeBlocks = function() {
     $(".time-block").each(function (){
         // Assign variable to check against currentHour based on id
         hourBlock = parseInt($(this).attr("id").split("time")[1]);
+        // Removes any preexisting color code classes when setInterval calls checkTimeBlocks
+        $(this).removeClass("past present future");
         // Assigns class for color coding
         if (hourBlock < currentHour) {
             $(this).addClass("past");
@@ -22,7 +24,9 @@ var checkTimeBlocks = function() {
         else if (hourBlock > currentHour) {
             $(this).addClass("future");
         }
+        
     });
+    console.log("function called!")
 };
 
 // Function for saving tasks in each time block
@@ -31,5 +35,7 @@ var checkTimeBlocks = function() {
 
 // Clear localstorage if it is a new date?
 
-
+// Calls checkTimeBlocks on page load-in
 checkTimeBlocks();
+// If user leaves page on, checkTimeBlocks calls every 15 minutes to update colors
+setInterval(checkTimeBlocks, (1000 * 60) * 15);
